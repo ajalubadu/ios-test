@@ -38,25 +38,25 @@ jobs:
       run: mkdir -p build
 
     - name: Export iOS project
-      run: godot --export "iOS" build/iOS test.xcodeproj
+      run: godot --export_debug "iOS" build/iOS test.xcodeproj
       env:
         DISPLAY: :99.0
         
     - name: Set iOS Deployment Target
-      run: sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = 10.0;/IPHONEOS_DEPLOYMENT_TARGET = 12.0;/' build/your_project_name.xcodeproj/project.pbxproj
+      run: sed -i '' 's/IPHONEOS_DEPLOYMENT_TARGET = 10.0;/IPHONEOS_DEPLOYMENT_TARGET = 12.0;/' build/iOS test.xcodeproj/project.pbxproj
 
 
     - name: Build iOS project
-      run: xcodebuild -project build/your_project_name.xcodeproj -scheme your_project_name -configuration Development -archivePath build/your_project_name.xcarchive archive \ CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
+      run: xcodebuild -project build/iOS test.xcodeproj -scheme iOS test -configuration Development -archivePath build/iOS test.xcarchive archive \ CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO CODE_SIGNING_ALLOWED=NO
 
     - name: Export IPA
       run: | 
         cd build
-        cd your_project_name.xcarchive
+        cd iOS test.xcarchive
         cd Products
         cd Applications
         mkdir Payload
-        mv your_project_name.app Payload/
+        mv iOS test.app Payload/
         zip -r App.ipa Payload/
         mv App.ipa ../../../
     - name: Upload IPA to GitHub Artifacts

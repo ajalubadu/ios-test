@@ -5,6 +5,8 @@
 [node name="Main" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(235.5, 107.75)
-scale = Vector2(29.1953, 18.1289)
+position = Vector2(206, 193)
+scale = Vector2(4.91406, 4.19922)
 texture = ExtResource("1_ig7tw")
+
+[node name="Camera2D" type="Camera2D" parent="."]

@@ -5,6 +5,6 @@
 [node name="Main" type="Node2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1080, 810)
-scale = Vector2(16.789, 12.659)
+position = Vector2(1180, 820)
+scale = Vector2(18.4375, 12.8125)
 texture = ExtResource("1_ig7tw")

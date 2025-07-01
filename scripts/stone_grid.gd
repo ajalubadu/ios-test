@@ -55,7 +55,7 @@ func add_stone(stone: PackedScene, cell: Vector2i):
 	
 	var new_stone = stone.instantiate()
 	new_stone.position = map_to_local(cell)
-	new_stone.z_index = cell.x * cell.y
+	new_stone.z_index = (cell.x+1) * (cell.y+1)
 	add_child(new_stone)
 	
 	cells[cell] = new_stone

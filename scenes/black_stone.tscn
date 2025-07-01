@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjfhgm4e4lpmf"]
+
+[ext_resource type="Texture2D" uid="uid://ddnp8ov24ge5q" path="res://assets/black go stone.png" id="1_a5knt"]
+
+[node name="BlackStone" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1.5, 1.5)
+texture = ExtResource("1_a5knt")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://l7yb355hww8x"]
+
+[ext_resource type="Texture2D" uid="uid://dnbx8wcmanmcn" path="res://assets/go board 2.png" id="1_sugp2"]
+[ext_resource type="Script" uid="uid://rp06sc8j7ajx" path="res://scripts/placing_manager.gd" id="2_jyhfs"]
+[ext_resource type="Script" uid="uid://cl6i14xifoi8f" path="res://scripts/stone_grid.gd" id="3_tbgi4"]
+
+[sub_resource type="TileSet" id="TileSet_h2yge"]
+tile_size = Vector2i(156, 156)
+
+[node name="Main" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4096
+offset_left = -221.0
+offset_top = -117.0
+offset_right = 2760.0
+offset_bottom = 1865.0
+color = Color(0.862745, 0.701961, 0.360784, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -4096
+position = Vector2(1180, 820)
+scale = Vector2(2, 2)
+texture = ExtResource("1_sugp2")
+
+[node name="PlacingManager" type="Node2D" parent="." node_paths=PackedStringArray("grid")]
+script = ExtResource("2_jyhfs")
+grid = NodePath("../StoneGrid")
+
+[node name="StoneGrid" type="TileMapLayer" parent="."]
+position = Vector2(478, 118)
+tile_set = SubResource("TileSet_h2yge")
+script = ExtResource("3_tbgi4")

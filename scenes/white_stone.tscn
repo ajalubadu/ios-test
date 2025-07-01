@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://blcyhq00k5sj8"]
+
+[ext_resource type="Texture2D" uid="uid://ovfv2bxc0s8m" path="res://assets/white go stone.png" id="1_hiu31"]
+
+[node name="WhiteStone" type="Node2D"]
+scale = Vector2(2, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 1.5)
+texture = ExtResource("1_hiu31")

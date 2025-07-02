@@ -4,7 +4,7 @@
 
 [sub_resource type="Gradient" id="Gradient_a5knt"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0.161417, 0.535433)
+offsets = PackedFloat32Array(0.255906, 0.437008)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hiu31"]
@@ -15,13 +15,14 @@ fill_from = Vector2(0.55, 0.55)
 [node name="WhiteStone" type="Node2D"]
 scale = Vector2(2, 2)
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-0.5, 1.5)
+texture = ExtResource("1_hiu31")
+
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -5
 offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 64.0
 texture = SubResource("GradientTexture2D_hiu31")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-0.5, 1.5)
-texture = ExtResource("1_hiu31")

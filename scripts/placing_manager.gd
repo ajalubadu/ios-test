@@ -1,11 +1,8 @@
 extends Node2D
 
-const BLACK_STONE = preload("res://scenes/black_stone.tscn")
-const WHITE_STONE = preload("res://scenes/white_stone.tscn")
-
 @export var grid : StoneGrid
 
-var current_stone : PackedScene = BLACK_STONE
+var current_stone : int = grid.stone_type.BLACK
 
 
 func _input(event: InputEvent) -> void:
@@ -18,7 +15,7 @@ func place_current_stone(cell: Vector2i):
 	if cell in grid.get_open_cells():
 		grid.add_stone(current_stone, cell)
 		
-		if current_stone == BLACK_STONE:
-			current_stone = WHITE_STONE
+		if current_stone == grid.stone_type.BLACK:
+			current_stone = grid.stone_type.WHITE
 		else: 
-			current_stone = BLACK_STONE
+			current_stone = grid.stone_type.BLACK

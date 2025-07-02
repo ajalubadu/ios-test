@@ -16,6 +16,7 @@ fill_from = Vector2(0.55, 0.55)
 scale = Vector2(2, 2)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = -5
 offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0

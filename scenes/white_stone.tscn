@@ -4,7 +4,7 @@
 
 [sub_resource type="Gradient" id="Gradient_a5knt"]
 interpolation_mode = 2
-offsets = PackedFloat32Array(0.255906, 0.437008)
+offsets = PackedFloat32Array(0.161417, 0.535433)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_hiu31"]

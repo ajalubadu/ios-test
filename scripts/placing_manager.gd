@@ -3,6 +3,7 @@ extends Node2D
 @export var grid : StoneGrid
 
 var current_stone_color : Stone.StoneColor = Stone.StoneColor.BLACK
+var ko_cell : Vector2i = Vector2i(-1,-1)
 
 
 func _input(event: InputEvent) -> void:
@@ -25,6 +26,15 @@ func place_current_stone(cell: Vector2i) -> void:
 				enemy_captured_groups.append(group)
 			else:
 				self_captured_groups.append(group)
+		
+		# ko
+		if cell == ko_cell:
+			grid.remove_stone(cell)
+			return
+		if self_captured_groups.size() == 1 and enemy_captured_groups.size() == 1 and enemy_captured_groups[0].size() == 1:
+			ko_cell = enemy_captured_groups[0][0]
+		else:
+			ko_cell = Vector2i(-1, -1)
 		
 		# normal capture
 		if enemy_captured_groups.size() > 0 and self_captured_groups.size() == 0:

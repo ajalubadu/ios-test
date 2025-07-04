@@ -16,17 +16,30 @@ func place_current_stone(cell: Vector2i) -> void:
 		grid.add_stone(current_stone_color, cell)
 		
 		var captured_groups = grid.find_all_captured_groups()
-		var enemy_captured = false
-		if captured_groups.size() == 0:
-			pass
-		else:
-			for group in captured_groups:
-				if grid.cells[group[0]].color != current_stone_color:
-					grid.remove_group(group)
-					enemy_captured = true
-			if not enemy_captured:
-				grid.remove_stone(cell)
-				return
+		
+		var enemy_captured_groups: Array[Array] = []
+		var self_captured_groups: Array[Array] = []
+		
+		for group in captured_groups:
+			if grid.cells[group[0]].color != current_stone_color:
+				enemy_captured_groups.append(group)
+			else:
+				self_captured_groups.append(group)
+		
+		# normal capture
+		if enemy_captured_groups.size() > 0 and self_captured_groups.size() == 0:
+			for group in enemy_captured_groups:
+				grid.remove_group(group)
+		
+		# illegal self capture
+		if enemy_captured_groups.size() == 0 and self_captured_groups.size() > 0:
+			grid.remove_stone(cell)
+			return
+		
+		# capture by placing in eye
+		if self_captured_groups.size() > 0 and enemy_captured_groups.size() > 0:
+			for group in enemy_captured_groups:
+				grid.remove_group(group)
 		
 		if current_stone_color == Stone.StoneColor.BLACK:
 			current_stone_color = Stone.StoneColor.WHITE

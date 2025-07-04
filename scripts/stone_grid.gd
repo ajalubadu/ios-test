@@ -68,6 +68,7 @@ func _input(event: InputEvent) -> void:
 		
 		print(find_all_captured_groups())
 
+
 func find_group_at(cell: Vector2i) -> Array[Vector2i]:
 	var output: Array[Vector2i] = [cell]
 	
@@ -145,8 +146,16 @@ func find_all_groups() -> Array[Array]:
 	return output
 
 
-func add_stone(stone_scene: PackedScene, cell: Vector2i) -> void:
+func add_stone(stone_color: Stone.StoneColor, cell: Vector2i) -> void:
 	assert(cell in get_open_cells())
+	
+	var stone_scene
+	
+	match stone_color:
+		Stone.StoneColor.BLACK:
+			stone_scene = BLACK_STONE
+		Stone.StoneColor.WHITE:
+			stone_scene = WHITE_STONE
 	
 	var new_stone: Stone = stone_scene.instantiate()
 	new_stone.position = map_to_local(cell)

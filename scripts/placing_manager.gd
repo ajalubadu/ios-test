@@ -2,7 +2,7 @@ extends Node2D
 
 @export var grid : StoneGrid
 
-var current_stone : int = grid.stone_type.BLACK
+var current_stone_scene : PackedScene = StoneGrid.BLACK_STONE
 
 
 func _input(event: InputEvent) -> void:
@@ -13,9 +13,10 @@ func _input(event: InputEvent) -> void:
 
 func place_current_stone(cell: Vector2i):
 	if cell in grid.get_open_cells():
-		grid.add_stone(current_stone, cell)
+		grid.add_stone(current_stone_scene, cell)
+		grid.remove_all_captured_groups()
 		
-		if current_stone == grid.stone_type.BLACK:
-			current_stone = grid.stone_type.WHITE
+		if current_stone_scene == StoneGrid.BLACK_STONE:
+			current_stone_scene = StoneGrid.WHITE_STONE
 		else: 
-			current_stone = grid.stone_type.BLACK
+			current_stone_scene = StoneGrid.BLACK_STONE
